@@ -47,7 +47,7 @@ kubectl apply --filename https://raw.githubusercontent.com/knative/build-templat
    OK
    ```
 
-   This token can be used to authenticate with the IBM Cloud Container registry. The username to use will be `token` and the password the value of the generated token,`eyBlahBlahBlah.moreBlahBlahBlahNTAzNmMim5ldCJ9.dkdjeidndkdkeo300NWQ` in the example above.
+   This token can be used to authenticate with the IBM Cloud Container registry. The username to use will be `token` and the password the value of the generated token, `eyBlahBlahBlah.moreBlahBlahBlahNTAzNmMim5ldCJ9.dkdjeidndkdkeo300NWQ` in the example above.
 
 1. Copy the template file:
 
