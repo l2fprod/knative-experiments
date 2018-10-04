@@ -13,6 +13,7 @@ You need:
 * kubectl
 * envsubst
   * on macOS, get it with `brew install gettext`
+  * on Ubuntu, `apt-get install gettext`
 
 ## Configuring Knative
 
