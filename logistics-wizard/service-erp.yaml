@@ -1,0 +1,26 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: lw-erp
+  namespace: default
+  labels:
+    knative.dev/type: "app"
+spec:
+  runLatest:
+    configuration:
+      build:
+        serviceAccountName: lw-build-bot
+        source:
+          git:
+            url: https://github.com/IBM-Cloud/logistics-wizard-erp.git
+            revision: dev
+        template:
+          name: kaniko
+          arguments:
+          - name: IMAGE
+            value: ${REGISTRY}/${NAMESPACE}/lw-erp:latest
+      revisionTemplate:
+        spec:
+          container:
+            image: ${REGISTRY}/${NAMESPACE}/lw-erp:latest 
+            imagePullPolicy: Always

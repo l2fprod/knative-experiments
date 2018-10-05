@@ -1,0 +1,8 @@
+# based on https://github.com/knative/docs/blob/master/serving/using-a-custom-domain.md
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-domain
+  namespace: knative-serving
+data:
+  $INGRESS_DOMAIN: ""

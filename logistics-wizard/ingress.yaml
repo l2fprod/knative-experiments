@@ -1,0 +1,30 @@
+# redirect iks ingress to knative ingress
+# HTTP only
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: lw-knative-ingress
+  namespace: istio-system
+spec:
+  rules:
+    - host: lw-erp.default.$INGRESS_DOMAIN
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: knative-ingressgateway
+              servicePort: 80
+    - host: lw-controller.default.$INGRESS_DOMAIN
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: knative-ingressgateway
+              servicePort: 80
+    - host: lw-webui.default.$INGRESS_DOMAIN
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: knative-ingressgateway
+              servicePort: 80

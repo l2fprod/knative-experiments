@@ -1,0 +1,29 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: lw-webui
+  namespace: default
+  labels:
+    knative.dev/type: "app"
+spec:
+  runLatest:
+    configuration:
+      build:
+        serviceAccountName: lw-build-bot
+        source:
+          git:
+            url: https://github.com/IBM-Cloud/logistics-wizard-webui.git
+            revision: dev
+        steps:
+        - name: build-and-push
+          image: gcr.io/kaniko-project/executor
+          args:
+          - --dockerfile=/workspace/onestep.Dockerfile
+          - --destination=${REGISTRY}/${NAMESPACE}/lw-webui:latest
+          - --build-arg
+          - CONTROLLER_SERVICE=http://lw-controller.default.$INGRESS_DOMAIN
+      revisionTemplate:
+        spec:
+          container:
+            image: ${REGISTRY}/${NAMESPACE}/lw-webui:latest 
+            imagePullPolicy: Always
