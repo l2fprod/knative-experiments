@@ -5,6 +5,10 @@ kind: Ingress
 metadata:
   name: lw-knative-ingress
   namespace: istio-system
+  annotations:
+    # give 30s to services to start from "cold start"
+    ingress.bluemix.net/upstream-fail-timeout: "serviceName=knative-ingressgateway fail-timeout=30"
+    ingress.bluemix.net/upstream-max-fails: "serviceName=knative-ingressgateway max-fails=0"
 spec:
   rules:
     - host: lw-erp.default.$INGRESS_DOMAIN
