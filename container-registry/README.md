@@ -1,5 +1,7 @@
 # Use Knative Build with IBM Cloud Container Registry
 
+A companion project to [this Medium post](https://medium.com/@frederic.lavigne/using-knative-build-and-serving-with-ibm-cloud-container-registry-87277e5a93b8).
+
 * Based on [Orchestrating a source-to-URL deployment on Kubernetes
 ](https://github.com/knative/docs/tree/master/serving/samples/source-to-url-go)
 * Adapted for IBM Cloud Container Registry.
